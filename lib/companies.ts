@@ -8,20 +8,30 @@ export const companies: Array<
   | { provider: "smartrecruiters"; name: string; companyId: string }
   | { provider: "icims"; name: string; slug: string }
 > = [
-  // Known working
+  // Verified working Greenhouse companies
   { provider: "greenhouse", name: "Stripe", boardToken: "stripe" },
-  { provider: "amazon", name: "AWS", keywords: ["account executive", "enterprise"] },
-
-  // High-confidence Greenhouse (major companies likely to maintain APIs)
   { provider: "greenhouse", name: "Datadog", boardToken: "datadog" },
-  { provider: "greenhouse", name: "Snowflake", boardToken: "snowflakecomputing" },
   { provider: "greenhouse", name: "MongoDB", boardToken: "mongodb" },
   { provider: "greenhouse", name: "HashiCorp", boardToken: "hashicorp" },
-  { provider: "greenhouse", name: "HubSpot", boardToken: "hubspot" },
   { provider: "greenhouse", name: "Twilio", boardToken: "twilio" },
+  { provider: "greenhouse", name: "HubSpot", boardToken: "hubspot" },
 
-  // High-confidence Lever
-  { provider: "lever", name: "Ramp", site: "ramp" },
-  { provider: "lever", name: "Brex", site: "brex" },
-  { provider: "lever", name: "Mercury", site: "mercury" },
+  // Additional high-confidence Greenhouse companies
+  { provider: "greenhouse", name: "Cloudflare", boardToken: "cloudflare" },
+  { provider: "greenhouse", name: "Elastic", boardToken: "elastic" },
+  { provider: "greenhouse", name: "Confluent", boardToken: "confluent" },
+  { provider: "greenhouse", name: "GitLab", boardToken: "gitlab" },
+  { provider: "greenhouse", name: "Figma", boardToken: "figma" },
+  { provider: "greenhouse", name: "Asana", boardToken: "asana" },
+  { provider: "greenhouse", name: "CrowdStrike", boardToken: "crowdstrike" },
+  { provider: "greenhouse", name: "Snyk", boardToken: "snyk" },
+  { provider: "greenhouse", name: "Airtable", boardToken: "airtable" },
+
+  // AWS (working)
+  { provider: "amazon", name: "AWS", keywords: ["account executive", "enterprise", "strategic"] },
+
+  // Try a few Ashby companies (different API structure)
+  { provider: "ashby", name: "Linear", slug: "linear" },
+  { provider: "ashby", name: "Retool", slug: "retool" },
+  { provider: "ashby", name: "Vanta", slug: "vanta" },
 ]
