@@ -8,8 +8,20 @@ export const companies: Array<
   | { provider: "smartrecruiters"; name: string; companyId: string }
   | { provider: "icims"; name: string; slug: string }
 > = [
-  // Start with just these 3 that we know worked in the original demo
+  // Known working
   { provider: "greenhouse", name: "Stripe", boardToken: "stripe" },
-  { provider: "lever", name: "Anthropic", site: "anthropic" },
   { provider: "amazon", name: "AWS", keywords: ["account executive", "enterprise"] },
+
+  // High-confidence Greenhouse (major companies likely to maintain APIs)
+  { provider: "greenhouse", name: "Datadog", boardToken: "datadog" },
+  { provider: "greenhouse", name: "Snowflake", boardToken: "snowflakecomputing" },
+  { provider: "greenhouse", name: "MongoDB", boardToken: "mongodb" },
+  { provider: "greenhouse", name: "HashiCorp", boardToken: "hashicorp" },
+  { provider: "greenhouse", name: "HubSpot", boardToken: "hubspot" },
+  { provider: "greenhouse", name: "Twilio", boardToken: "twilio" },
+
+  // High-confidence Lever
+  { provider: "lever", name: "Ramp", site: "ramp" },
+  { provider: "lever", name: "Brex", site: "brex" },
+  { provider: "lever", name: "Mercury", site: "mercury" },
 ]
