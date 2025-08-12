@@ -1,0 +1,137 @@
+// app/page.tsx
+import React, { useState, useEffect } from 'react';
+import { Button } from 'ui';
+import { cn } from 'utils';
+
+const Page = () => {
+  const [days, setDays] = useState(1);
+  const [usOrRemoteOnly, setUsOrRemoteOnly] = useState(true);
+
+  const load = async () => {
+    const res = await fetch(`/api/jobs?days=${encodeURIComponent(days)}${usOrRemoteOnly ? "&us_or_remote=1" : ""}`);
+    const data = await res.json();
+    // Handle data here
+  };
+
+  useEffect(() => {
+    load();
+  }, [days, usOrRemoteOnly]);
+
+  return (
+    <div>
+      <h1>Job Openings</h1>
+      <p>Fresh openings filtered by title from selected company career pages. Defaults to the last 24 hours and US + Remote only.</p>
+      <div className="grid grid-cols-3 gap-4">
+        <div>
+          <label htmlFor="days">Days:</label>
+          <input
+            id="days"
+            type="number"
+            value={days}
+            onChange={(e) => setDays(Number(e.target.value))}
+            className="w-full"
+          />
+        </div>
+        <div className="flex gap-2">
+          <Button
+            variant={usOrRemoteOnly ? "default" : "outline"}
+            onClick={() => setUsOrRemoteOnly((v) => !v)}
+            className={cn("w-full")}
+          >
+            {usOrRemoteOnly ? "US + Remote only: ON" : "US + Remote only: OFF"}
+          </Button>
+          <Button variant="outline" onClick={load} className="w-28 bg-transparent">
+            Refresh
+          </Button>
+        </div>
+        {/* Other grid cells here */}
+      </div>
+    </div>
+  );
+};
+
+export default Page;
+
+// app/api/jobs/route.ts
+import { NextRequest, NextResponse } from 'next/server';
+import { getJobs } from 'data/jobs';
+import { filterIsEnterpriseAE, isRemote, isUSLocation } from 'utils/location';
+
+export async function GET(request: NextRequest) {
+  const { searchParams } = request.nextUrl;
+  const days = Number(searchParams.get("days")) || 1;
+  const onlyRemote = searchParams.get("remote") === "1";
+  const usOrRemote = searchParams.get("us_or_remote") === "1";
+  const sinceMs = Date.now() - days * 24 * 60 * 60 * 1000;
+
+  const jobs = await getJobs();
+  const filteredJobs = jobs
+    .filter((j) => {
+      // Title filter (Enterprise/Strategic AE)
+      if (!filterIsEnterpriseAE(j.title)) return false;
+
+      // Location filters
+      const locRaw = j.location ?? "";
+      if (onlyRemote) {
+        if (!isRemote(locRaw)) return false;
+      } else if (usOrRemote) {
+        if (!(isRemote(locRaw) || isUSLocation(locRaw))) return false;
+      }
+
+      // Time filter
+      const created = new Date(j.createdAt).getTime();
+      return isFinite(created) ? created >= sinceMs : true;
+    });
+
+  return NextResponse.json(filteredJobs);
+}
+
+function isRemote(raw: string): boolean {
+  const l = raw.toLowerCase();
+  if (!l) return false;
+  // Common indicators for remote roles
+  return (
+    /\bremote\b/.test(l) ||
+    /\banywhere\b/.test(l) ||
+    /\bdistributed\b/.test(l) ||
+    /\b(us|usa|united states)\b.*\bremote\b/.test(l) ||
+    /\bremote\b.*\b(us|usa|united states)\b/.test(l)
+  );
+}
+
+function isUSLocation(raw: string): boolean {
+  if (!raw) return false;
+  const l = raw.toLowerCase();
+  // Direct mentions of US
+  if (/\b(united states|u\.s\.a?|usa)\b/.test(l)) return true;
+  // Washington, D.C. variants
+  if (/\b(washington[, ]?d\.?c\.?)\b/.test(l)) return true;
+
+  // Full state names
+  const STATE_NAMES = [
+    "alabama","alaska","arizona","arkansas","california","colorado","connecticut","delaware","florida","georgia",
+    "hawaii","idaho","illinois","indiana","iowa","kansas","kentucky","louisiana","maine","maryland","massachusetts",
+    "michigan","minnesota","mississippi","missouri","montana","nebraska","nevada","new hampshire","new jersey",
+    "new mexico","new york","north carolina","north dakota","ohio","oklahoma","oregon","pennsylvania","rhode island",
+    "south carolina","south dakota","tennessee","texas","utah","vermont","virginia","washington","west virginia",
+    "wisconsin","wyoming","district of columbia"
+  ];
+  if (STATE_NAMES.some((n) => l.includes(n))) return true;
+
+  // State abbreviations (check against the original-cased string for clearer boundaries)
+  const u = raw.toUpperCase();
+  const STATE_ABBR = [
+    "AL","AK","AZ","AR","CA","CO","CT","DE","FL","GA",
+    "HI","ID","IL","IN","IA","KS","KY","LA","ME","MD",
+    "MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ",
+    "NM","NY","NC","ND","OH","OK","OR","PA","RI","SC",
+    "SD","TN","TX","UT","VT","VA","WA","WV","WI","WY","DC"
+  ];
+  // Match patterns like "City, CA", "(CA)", " CA ", "CA/" or trailing "CA"
+  for (const ab of STATE_ABBR) {
+    const re = new RegExp(`(^|[\\s,\\/\$$])${ab}([\\s,\\/\$$]|$)`);
+    if (re.test(u)) return true;
+  }
+
+  return false;
+}
