@@ -17,16 +17,16 @@ export const companies: Array<
   { provider: "greenhouse", name: "HubSpot", boardToken: "hubspot" },
 
   // High-priority companies - try alternative tokens
-  { provider: "greenhouse", name: "Snowflake", boardToken: "snowflake" }, // Try without "computing"
+  { provider: "greenhouse", name: "Snowflake", boardToken: "snowflakeinc" }, // Try without "computing"
   { provider: "greenhouse", name: "Cloudflare", boardToken: "cloudflare" },
   { provider: "greenhouse", name: "Elastic", boardToken: "elastic" },
-  { provider: "greenhouse", name: "Confluent", boardToken: "confluent" },
+  { provider: "greenhouse", name: "Confluent", boardToken: "confluentinc" },
   { provider: "greenhouse", name: "GitLab", boardToken: "gitlab" },
   { provider: "greenhouse", name: "Figma", boardToken: "figma" },
   { provider: "greenhouse", name: "Asana", boardToken: "asana" },
-  { provider: "greenhouse", name: "CrowdStrike", boardToken: "crowdstrike" },
+  { provider: "greenhouse", name: "CrowdStrike", boardToken: "crowdstrikeinc" },
   { provider: "greenhouse", name: "Databricks", boardToken: "databricks" },
-  { provider: "greenhouse", name: "Atlassian", boardToken: "atlassian" },
+  { provider: "greenhouse", name: "Atlassian", boardToken: "atlassiancorp" },
 
   // AWS
   { provider: "amazon", name: "AWS", keywords: ["account executive", "enterprise", "strategic"] },
