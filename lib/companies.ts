@@ -8,53 +8,57 @@ export const companies: Array<
   | { provider: "smartrecruiters"; name: string; companyId: string }
   | { provider: "icims"; name: string; slug: string }
 > = [
-  // Verified working Greenhouse companies
+  // Verified working companies (keep these)
   { provider: "greenhouse", name: "Stripe", boardToken: "stripe" },
   { provider: "greenhouse", name: "Datadog", boardToken: "datadog" },
   { provider: "greenhouse", name: "MongoDB", boardToken: "mongodb" },
   { provider: "greenhouse", name: "HashiCorp", boardToken: "hashicorp" },
   { provider: "greenhouse", name: "Twilio", boardToken: "twilio" },
-  { provider: "greenhouse", name: "HubSpot", boardToken: "hubspot" },
-
-  // High-priority companies - try alternative tokens
-  { provider: "greenhouse", name: "Snowflake", boardToken: "snowflakeinc" }, // Try without "computing"
   { provider: "greenhouse", name: "Cloudflare", boardToken: "cloudflare" },
   { provider: "greenhouse", name: "Elastic", boardToken: "elastic" },
-  { provider: "greenhouse", name: "Confluent", boardToken: "confluentinc" },
   { provider: "greenhouse", name: "GitLab", boardToken: "gitlab" },
   { provider: "greenhouse", name: "Figma", boardToken: "figma" },
   { provider: "greenhouse", name: "Asana", boardToken: "asana" },
-  { provider: "greenhouse", name: "CrowdStrike", boardToken: "crowdstrikeinc" },
   { provider: "greenhouse", name: "Databricks", boardToken: "databricks" },
-  { provider: "greenhouse", name: "Atlassian", boardToken: "atlassiancorp" },
+
+  // Research-based tier-1 additions (I'll verify these work)
+  { provider: "greenhouse", name: "Snowflake", boardToken: "snowflake" },
+  { provider: "greenhouse", name: "PagerDuty", boardToken: "pagerduty" },
+  { provider: "greenhouse", name: "New Relic", boardToken: "newrelic" },
+  { provider: "greenhouse", name: "Splunk", boardToken: "splunk" },
+  { provider: "greenhouse", name: "Okta", boardToken: "okta" },
+  { provider: "greenhouse", name: "Auth0", boardToken: "auth0" },
+  { provider: "greenhouse", name: "Segment", boardToken: "segment" },
+  { provider: "greenhouse", name: "SendGrid", boardToken: "sendgrid" },
+
+  // Major enterprise companies via SmartRecruiters
+  { provider: "smartrecruiters", name: "Microsoft", companyId: "Microsoft" },
+  { provider: "smartrecruiters", name: "Adobe", companyId: "Adobe" },
+  { provider: "smartrecruiters", name: "VMware", companyId: "VMware" },
 
   // AWS
   { provider: "amazon", name: "AWS", keywords: ["account executive", "enterprise", "strategic"] },
 
-  // High-priority Lever companies - keep trying
-  { provider: "lever", name: "Ramp", site: "ramp" },
-  { provider: "lever", name: "Brex", site: "brex" },
-  { provider: "lever", name: "Anthropic", site: "anthropic" },
-  { provider: "lever", name: "Canva", site: "canva" },
-
-  // Ashby alternatives
-  { provider: "ashby", name: "Linear", slug: "linear" },
-  { provider: "ashby", name: "Retool", slug: "retool" },
-  { provider: "ashby", name: "Vanta", slug: "vanta" },
-
-  // Major enterprise companies via Workday
+  // Major Workday companies (enterprise-focused)
   {
     provider: "workday",
     name: "Salesforce",
     tenant: "salesforce",
-    siteCandidates: ["careers", "jobs", "external"],
+    siteCandidates: ["external", "careers"],
     region: "wd1",
   },
   {
     provider: "workday",
-    name: "Adobe",
-    tenant: "adobe",
-    siteCandidates: ["external_experienced", "experienced", "careers"],
-    region: "wd5",
+    name: "ServiceNow",
+    tenant: "servicenow",
+    siteCandidates: ["external", "SN_External_Career_Site"],
+    region: "wd1",
+  },
+  {
+    provider: "workday",
+    name: "Oracle",
+    tenant: "oracle",
+    siteCandidates: ["external", "careers"],
+    region: "wd1",
   },
 ]
