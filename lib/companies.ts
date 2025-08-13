@@ -33,14 +33,8 @@ export const companies: Array<
   { provider: "greenhouse", name: "Cockroach Labs", boardToken: "cockroachlabs" },
   { provider: "greenhouse", name: "Temporal", boardToken: "temporal" },
 
-  // SNOWFLAKE - Correct Workday configuration based on research
-  {
-    provider: "workday",
-    name: "Snowflake",
-    tenant: "snowflake",
-    siteCandidates: ["snowflake", "external", "careers"],
-    region: "wd5",
-  },
+  // SNOWFLAKE - Try SmartRecruiters (they might have switched)
+  { provider: "smartrecruiters", name: "Snowflake", companyId: "Snowflake" },
 
   // Enterprise companies via SmartRecruiters
   { provider: "smartrecruiters", name: "Microsoft", companyId: "Microsoft" },
@@ -49,5 +43,9 @@ export const companies: Array<
 
   // AWS
   { provider: "amazon", name: "AWS", keywords: ["account executive", "enterprise", "strategic"] },
-]
 
+  // Add more tier-1 companies while we figure out Snowflake
+  { provider: "greenhouse", name: "Confluent", boardToken: "confluent" },
+  { provider: "greenhouse", name: "Zscaler", boardToken: "zscaler" },
+  { provider: "greenhouse", name: "CrowdStrike", boardToken: "crowdstrike" },
+]
