@@ -17,6 +17,7 @@ export const companies: Array<
   { provider: "greenhouse", name: "Cloudflare", boardToken: "cloudflare" },
   { provider: "greenhouse", name: "MongoDB", boardToken: "mongodb" },
   { provider: "greenhouse", name: "Stripe", boardToken: "stripe" },
+  { provider: "greenhouse", name: "Zscaler", boardToken: "zscaler" },
 
   // Solid mid-tier companies (verified working)
   { provider: "greenhouse", name: "New Relic", boardToken: "newrelic" },
@@ -33,19 +34,12 @@ export const companies: Array<
   { provider: "greenhouse", name: "Cockroach Labs", boardToken: "cockroachlabs" },
   { provider: "greenhouse", name: "Temporal", boardToken: "temporal" },
 
-  // SNOWFLAKE - Try SmartRecruiters (they might have switched)
-  { provider: "smartrecruiters", name: "Snowflake", companyId: "Snowflake" },
-
   // Enterprise companies via SmartRecruiters
+  { provider: "smartrecruiters", name: "Snowflake", companyId: "Snowflake" },
   { provider: "smartrecruiters", name: "Microsoft", companyId: "Microsoft" },
   { provider: "smartrecruiters", name: "Adobe", companyId: "Adobe" },
   { provider: "smartrecruiters", name: "VMware", companyId: "VMware" },
 
   // AWS
   { provider: "amazon", name: "AWS", keywords: ["account executive", "enterprise", "strategic"] },
-
-  // Add more tier-1 companies while we figure out Snowflake
-  { provider: "greenhouse", name: "Confluent", boardToken: "confluent" },
-  { provider: "greenhouse", name: "Zscaler", boardToken: "zscaler" },
-  { provider: "greenhouse", name: "CrowdStrike", boardToken: "crowdstrike" },
 ]
