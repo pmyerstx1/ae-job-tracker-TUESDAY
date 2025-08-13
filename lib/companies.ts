@@ -26,30 +26,23 @@ export const companies: Array<
   { provider: "greenhouse", name: "Asana", boardToken: "asana" },
   { provider: "greenhouse", name: "PagerDuty", boardToken: "pagerduty" },
 
-  // SNOWFLAKE - Test multiple approaches systematically
-  { provider: "greenhouse", name: "Snowflake (test1)", boardToken: "snowflake" },
-  { provider: "greenhouse", name: "Snowflake (test2)", boardToken: "snowflakecomputing" },
-  { provider: "greenhouse", name: "Snowflake (test3)", boardToken: "snowflakeinc" },
-  { provider: "greenhouse", name: "Snowflake (test4)", boardToken: "snowflakedb" },
-  { provider: "greenhouse", name: "Snowflake (test5)", boardToken: "snowflake-inc" },
-  { provider: "smartrecruiters", name: "Snowflake (SR)", companyId: "Snowflake" },
-  { provider: "smartrecruiters", name: "Snowflake (SR2)", companyId: "SnowflakeInc" },
-  {
-    provider: "workday",
-    name: "Snowflake (WD)",
-    tenant: "snowflake",
-    siteCandidates: ["external", "careers", "jobs"],
-    region: "wd1",
-  },
+  // SNOWFLAKE - Try other ATS providers
+  { provider: "lever", name: "Snowflake (Lever1)", site: "snowflake" },
+  { provider: "lever", name: "Snowflake (Lever2)", site: "snowflakecomputing" },
+  { provider: "ashby", name: "Snowflake (Ashby1)", slug: "snowflake" },
+  { provider: "ashby", name: "Snowflake (Ashby2)", slug: "snowflakecomputing" },
+  { provider: "icims", name: "Snowflake (iCIMS1)", slug: "snowflake" },
+  { provider: "icims", name: "Snowflake (iCIMS2)", slug: "careers-snowflake" },
+  { provider: "teamtailor", name: "Snowflake (TT)", slug: "snowflake" },
 
-  // Research-based additions (likely to work based on patterns)
+  // Research-based additions
   { provider: "greenhouse", name: "Sumo Logic", boardToken: "sumologic" },
   { provider: "greenhouse", name: "LaunchDarkly", boardToken: "launchdarkly" },
   { provider: "greenhouse", name: "Fastly", boardToken: "fastly" },
   { provider: "greenhouse", name: "Cockroach Labs", boardToken: "cockroachlabs" },
   { provider: "greenhouse", name: "Temporal", boardToken: "temporal" },
 
-  // Enterprise companies via SmartRecruiters (working but no matches yet)
+  // Enterprise companies via SmartRecruiters
   { provider: "smartrecruiters", name: "Microsoft", companyId: "Microsoft" },
   { provider: "smartrecruiters", name: "Adobe", companyId: "Adobe" },
   { provider: "smartrecruiters", name: "VMware", companyId: "VMware" },
