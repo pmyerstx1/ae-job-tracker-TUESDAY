@@ -26,12 +26,21 @@ export const companies: Array<
   { provider: "greenhouse", name: "Asana", boardToken: "asana" },
   { provider: "greenhouse", name: "PagerDuty", boardToken: "pagerduty" },
 
-  // Research-based additions
+  // Research-based working additions
   { provider: "greenhouse", name: "Sumo Logic", boardToken: "sumologic" },
   { provider: "greenhouse", name: "LaunchDarkly", boardToken: "launchdarkly" },
   { provider: "greenhouse", name: "Fastly", boardToken: "fastly" },
   { provider: "greenhouse", name: "Cockroach Labs", boardToken: "cockroachlabs" },
   { provider: "greenhouse", name: "Temporal", boardToken: "temporal" },
+
+  // SNOWFLAKE - Correct Workday configuration based on research
+  {
+    provider: "workday",
+    name: "Snowflake",
+    tenant: "snowflake",
+    siteCandidates: ["snowflake", "external", "careers"],
+    region: "wd5",
+  },
 
   // Enterprise companies via SmartRecruiters
   { provider: "smartrecruiters", name: "Microsoft", companyId: "Microsoft" },
@@ -41,3 +50,4 @@ export const companies: Array<
   // AWS
   { provider: "amazon", name: "AWS", keywords: ["account executive", "enterprise", "strategic"] },
 ]
+
