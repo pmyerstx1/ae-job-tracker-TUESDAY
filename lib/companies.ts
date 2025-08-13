@@ -26,15 +26,6 @@ export const companies: Array<
   { provider: "greenhouse", name: "Asana", boardToken: "asana" },
   { provider: "greenhouse", name: "PagerDuty", boardToken: "pagerduty" },
 
-  // SNOWFLAKE - Try other ATS providers
-  { provider: "lever", name: "Snowflake (Lever1)", site: "snowflake" },
-  { provider: "lever", name: "Snowflake (Lever2)", site: "snowflakecomputing" },
-  { provider: "ashby", name: "Snowflake (Ashby1)", slug: "snowflake" },
-  { provider: "ashby", name: "Snowflake (Ashby2)", slug: "snowflakecomputing" },
-  { provider: "icims", name: "Snowflake (iCIMS1)", slug: "snowflake" },
-  { provider: "icims", name: "Snowflake (iCIMS2)", slug: "careers-snowflake" },
-  { provider: "teamtailor", name: "Snowflake (TT)", slug: "snowflake" },
-
   // Research-based additions
   { provider: "greenhouse", name: "Sumo Logic", boardToken: "sumologic" },
   { provider: "greenhouse", name: "LaunchDarkly", boardToken: "launchdarkly" },
