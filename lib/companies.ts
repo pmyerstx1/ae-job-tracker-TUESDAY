@@ -1,4 +1,4 @@
-export const companies: Array<
+ export const companies: Array<
   | { provider: "greenhouse"; name: string; boardToken: string }
   | { provider: "lever"; name: string; site: string }
   | { provider: "workday"; name: string; tenant: string; site?: string; siteCandidates?: string[]; region?: string }
@@ -28,6 +28,24 @@ export const companies: Array<
   { provider: "greenhouse", name: "PagerDuty", boardToken: "pagerduty" },
 
   // Research-based working additions
+  { provider: "greenhouse", name: "Sumo Logic", boardToken: "sumologic" },
+  { provider: "greenhouse", name: "LaunchDarkly", boardToken: "launchdarkly" },
+  { provider: "greenhouse", name: "Fastly", boardToken: "fastly" },
+  { provider: "greenhouse", name: "Cockroach Labs", boardToken: "cockroachlabs" },
+  { provider: "greenhouse", name: "Temporal", boardToken: "temporal" },
+
+  // Enterprise companies via SmartRecruiters
+  { provider: "smartrecruiters", name: "Snowflake", companyId: "Snowflake" },
+  { provider: "smartrecruiters", name: "Microsoft", companyId: "Microsoft" },
+  { provider: "smartrecruiters", name: "Adobe", companyId: "Adobe" },
+  { provider: "smartrecruiters", name: "VMware", companyId: "VMware" },
+  // Add Nvidia (Workday)
+  { provider: "workday", name: "Nvidia", tenant: "nvidia", site: "jobs" },
+
+  // AWS
+  { provider: "amazon", name: "AWS", keywords: ["account executive", "enterprise", "strategic"] },
+]
+itions
   { provider: "greenhouse", name: "Sumo Logic", boardToken: "sumologic" },
   { provider: "greenhouse", name: "LaunchDarkly", boardToken: "launchdarkly" },
   { provider: "greenhouse", name: "Fastly", boardToken: "fastly" },
